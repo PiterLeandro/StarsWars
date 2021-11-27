@@ -1,7 +1,9 @@
 import requests
+from planeta import Planeta
 
-r = requests.get('http://swapi.dev/api/films/3')
+for i in list(range(1,60)):
 
-nuuk = r.json()
-print(nuuk)
-print(nuuk['vehicles'])
+    r = requests.get(f'http://swapi.dev/api/planets/{i}')
+    planet = r.json()
+    naboo = Planeta(i, planet['name'],planet['climate'], planet['terrain'], 0)
+    print(naboo.toJSON())
